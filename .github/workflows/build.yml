@@ -43,7 +43,7 @@ jobs:
           path: _build/xbox
 
   build_ps3:
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
 
     steps:
       - uses: actions/checkout@v3
@@ -57,23 +57,27 @@ jobs:
           python dependencies/dev_scripts/download_mackiloha.py
       - name: Set env
         run: |
-          echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-7)" >> $GITHUB_ENV
-          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-          chmod +x dependencies/linux/arkhelper
-          chmod +x dependencies/linux/dtab
-          chmod +x dependencies/linux/superfreq
           pip install gitpython
           pip install mido
-      - name: Remove PS3 files
+          pip install requests
+      - name: fetch TrueAncestor PKG Repacker
         run: |
-          find . -name "*.*_xbox" -type f -delete
+          python dependencies/dev_scripts/download_ta_pkg_repacker.py
+      - name: Remove Xbox files
+        run: |
+          Get-ChildItem _ark/ -recurse -include *.*_xbox | remove-item
       - name: Build ARK
         run: |
-          dependencies/linux/arkhelper dir2ark ./_ark ./_build/ps3/gen -n "patch_ps3" -e -v 5
-          cp -r "ps3 disc patch" "_build/ps3/"
-      
+          dependencies/windows/arkhelper.exe dir2ark _ark _build/ps3/USRDIR/gen -n "patch_ps3" -e -v 5
+      - name: Build PKG
+        run: |
+          $sha_short="$(git rev-parse --short HEAD)".ToUpper()
+          $content="UP0006-BLUS30282_00-TBRDXNITE"
+          $packageversion="1.00"
+          dependencies/ta_pkg_repacker_tools/make_package_npdrm_retail.exe --k-licensee 0x00000000000000000000000000000000 --drm-type Local --package-version $packageversion --content-type GameData --content-id ($content + $sha_short) dependencies/ta_pkg_repacker_tools/package.conf _build/ps3
+
       - name: Upload result
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: TBRBDX-PS3
-          path: _build/ps3
+          path: '*.pkg'
