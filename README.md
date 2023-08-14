@@ -66,10 +66,13 @@ This guide contains full instructions on how to install The Beatles: Rock Band D
 * **Install your North American copy of The Beatles: Rock Band** through the emulator. The [**official RPCS3 site covers this nicely**](https://rpcs3.net/quickstart).
   * Remember, **you need to be running** ***BLUS30282***. RPCS3 will tell you this in the game selection GUI under the `Serial` column.
 
-* Download [**The Beatles: Rock Band Deluxe for PS3**](https://nightly.link/hmxmilohax/beatles-rock-band-deluxe/workflows/build/main/TBRBDX-PS3.zip). 
-  * Extract the zip and **copy the contents of the `ps3 disc patch` folder to where your vanilla copy of The Beatles: Rock Band is installed**.
-  * Copy **everything else to `\dev_hdd0\game\BLUS30282\`**. If you do not see the `BLUS30282` folder, simply create it.
-  * Select `Yes` to overwrite the files if asked.
+* Download [**The Beatles: Rock Band Deluxe for PS3**](https://nightly.link/hmxmilohax/beatles-rock-band-deluxe/workflows/build/main/TBRBDX-PS3.zip).
+  * Extract the zip and **drag and drop the `.pkg` file on top of the main RPCS3 window** to install it.
+  * Select `Yes` to confirm.
+
+* Download [**TBRBDX: PS3 Disc Patch**](https://github.com/hmxmilohax/beatles-rock-band-deluxe/raw/main/dependencies/TBRBDX-PS3DiscPatch.zip)
+  * Extract the zip and **copy the contents of the folder to where your vanilla copy of The Beatles: Rock Band is installed**.
+  * Select `Yes` to overwrite the files.
 
 ***The Beatles: Rock Band Deluxe is now installed!***
 
@@ -95,10 +98,14 @@ This guide contains full instructions on how to install The Beatles: Rock Band D
   * Remember, **you need to be running** ***BLUS30282***.
 
 * Download [**The Beatles: Rock Band Deluxe for PS3**](https://nightly.link/hmxmilohax/beatles-rock-band-deluxe/workflows/build/main/TBRBDX-PS3.zip). 
-  * Extract the zip and **copy the contents of the `ps3 disc patch` folder to where your vanilla copy of The Beatles: Rock Band is installed** (we recommend using FTP to do so).
-    * If you used MultiMan to dump your game, it should be in `\dev_hdd0\GAMES\BLUS30282-[The Beatles Rock Band]\PS3_GAME\`.
-  * Copy **everything else to `\dev_hdd0\game\BLUS30282\`**. If you do not see the `BLUS30282` folder, simply create it.
-  * Select `Yes` to overwrite the files if asked.
+  * Extract the zip and copy the `.pkg` file to the root of a FAT32 formatted USB drive.
+  * Remove it from your PC and plug it in to the *rightmost* USB port on your PS3.
+  * Navigate to `Package Manager > Install Package Files > Standard` in the XMB and install it just like any other package.
+
+* Download [**TBRBDX: PS3 Disc Patch**](https://github.com/hmxmilohax/beatles-rock-band-deluxe/raw/main/dependencies/TBRBDX-PS3DiscPatch.zip)
+  * Extract the zip and **copy the contents of the folder to where your vanilla copy of The Beatles: Rock Band is installed** (we recommend using FTP to do so).
+    * If you used MultiMan to dump your game, it should be in `\dev_hdd0\GAMES\BLUS30282-[The Beatles Rock Band]\`.
+  * Select `Yes` to overwrite the files.
 
 ***The Beatles: Rock Band Deluxe is now installed!***
 
